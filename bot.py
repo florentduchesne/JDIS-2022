@@ -17,6 +17,10 @@ class MyBot:
         x = random.randrange(0, state.map_width)
         y = random.randrange(0, state.map_height)
         return x, y
+    def random_center_position(self, stats: GameState) -> Tuple[float]:
+        x = random.randrange(2000, 3000)
+        y = random.randrange(2000, 3000)
+        return x, y
 
     def random_upgrade(self) -> Upgrade:
         return random.choice([
@@ -33,7 +37,7 @@ class MyBot:
         # Program your bot here
 
         return Action(
-            destination=self.random_position(state),
+            destination=self.random_center_position(state),
             target=self.random_position(state),
             purchase=self.random_upgrade()
         )
