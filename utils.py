@@ -27,6 +27,9 @@ def get_closer_tank(our_tank: Tank, state: GameState) -> Tuple[float]:
                 min_tank = key
     return min_tank, min_dist
 
+def get_max_projectile_range(tank: Tank) -> float:
+    return tank.projectile_time_to_live * 20
+
 def random_position(state: GameState) -> Tuple[float]:
     x = random.randrange(0, state.map_width)
     y = random.randrange(0, state.map_height)

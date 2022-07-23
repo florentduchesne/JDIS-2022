@@ -20,7 +20,7 @@ class MyBot:
         
         our_tank = utils.get_our_tank(self.id, state)
         closer_tank_id, closer_tank_dist = utils.get_closer_tank(our_tank, state)
-        if closer_tank_dist < 500:
+        if closer_tank_dist < utils.get_max_projectile_range(our_tank) * 0.9:
             target = state.tanks[closer_tank_id].position
 
         return Action(
