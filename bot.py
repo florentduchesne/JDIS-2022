@@ -5,6 +5,7 @@ from typing import Tuple
 from core import Action, GameState, Upgrade, Debris, Tank
 import utils
 import clustering
+import upgrading
 
 
 class MyBot:
@@ -41,5 +42,5 @@ class MyBot:
         return Action(
             destination=destination,
             target=target,
-            purchase=utils.random_upgrade()
+            purchase=upgrading.get_updgrade(our_tank)
         )
