@@ -22,7 +22,7 @@ class MyBot:
         destination=utils.random_center_position()
 
         #si peu d'exp, farm l'exp
-        if our_tank.experience < 1000:
+        if our_tank.experience < 750:
             clusters = clustering.clustering(state, 6).cluster_centers_
             best_cluster = utils.get_closer_cluster(our_tank, clusters)
             destination = (int(best_cluster[0][0]), int(best_cluster[0][1]))
@@ -31,7 +31,7 @@ class MyBot:
         closer_tank_id, closer_tank_dist = utils.get_closer_tank(our_tank, state)
         closer_debris, closer_debris_dist = utils.get_closer_debris(our_tank, state)
         
-        max_range =  utils.get_max_projectile_range(our_tank) * 0.9
+        max_range =  utils.get_max_projectile_range(our_tank) * 0.99
         
         if closer_tank_dist < max_range:
             target = state.tanks[closer_tank_id].position
