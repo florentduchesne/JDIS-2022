@@ -29,8 +29,14 @@ class MyBot:
             
         
         closer_tank_id, closer_tank_dist = utils.get_closer_tank(our_tank, state)
-        if closer_tank_dist < utils.get_max_projectile_range(our_tank) * 0.9:
+        closer_debris, closer_debris_dist = utils.get_closer_debris(our_tank, state)
+        
+        max_range =  utils.get_max_projectile_range(our_tank) * 0.9
+        
+        if closer_tank_dist < max_range:
             target = state.tanks[closer_tank_id].position
+        elif closer_debris_dist < max_range:
+            target = closer_debris.position
 
         return Action(
             destination=destination,

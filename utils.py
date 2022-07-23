@@ -39,6 +39,18 @@ def get_closer_tank(our_tank: Tank, state: GameState) -> Tuple[float]:
                 min_tank = key
     return min_tank, min_dist
 
+def get_closer_debris(our_tank: Tank, state: GameState) -> Tuple[float]:
+    min_dist = 5000 * 5000
+    min_debris = None
+    for debris in state.debris:
+        pos1 = debris.position
+        pos2 = our_tank.position
+        dist = distance(pos1, pos2)
+        if min_dist > dist:
+            min_dist = dist
+            min_debris = debris
+    return min_debris, min_dist
+
 def get_max_projectile_range(tank: Tank) -> float:
     return tank.projectile_time_to_live * 20
 
