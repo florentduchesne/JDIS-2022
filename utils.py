@@ -1,6 +1,6 @@
 import math
 from core import Action, GameState, Upgrade, Debris, Tank
-from typing import Tuple
+from typing import Tuple, List
 import random
 
 def get_our_tank(our_id: int, state: GameState) -> Tank:
@@ -13,6 +13,18 @@ def distance(pos1, pos2):
     dx = abs(pos1[0] - pos2[0])
     dy = abs(pos1[1] - pos2[1])
     return math.sqrt(dx * dx + dy * dy)
+
+def get_closer_cluster(our_tank: Tank, clusters: List):
+    min_dist = 5000*5000
+    best_cluster = None
+    for cluster in clusters:
+        pos1 = our_tank.position
+        pos2 = cluster
+        dist = distance(pos1, pos2)
+        if min_dist > dist:
+            min_dist = dist
+            best_cluster = cluster
+    return best_cluster, min_dist
 
 def get_closer_tank(our_tank: Tank, state: GameState) -> Tuple[float]:
     min_dist = 5000 * 5000
