@@ -58,9 +58,9 @@ def random_position(state: GameState) -> Tuple[float]:
     x = random.randrange(0, state.map_width)
     y = random.randrange(0, state.map_height)
     return x, y
-def random_center_position() -> Tuple[float]:
-    x = random.randrange(1500, 3500)
-    y = random.randrange(1500, 3500)
+def random_center_position(STATE) -> Tuple[float]:
+    x = random.randrange(1750, 3250)
+    y = random.randrange(1750, 3250)
     return x, y
 
 def random_upgrade() -> Upgrade:
